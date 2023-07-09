@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Rangkul</string>
+    <string name="message_desc">Just Speak Up! We help you to speak\nsafely and conviniently to get support\nfrom the others</string>
+    <string name="message_title">You are not alone!</string>
+    <string name="login_message">Welcome back to</string>
+    <string name="app_title">Rangkul</string>
+    <string name="signup_message">Hi, welcome to</string>
+    <string name="signup_email">Sign up with Email</string>
+    <string name="login_email">Log In with Email</string>
+    <string name="delete_post_description">Are you sure want to delete this post?\nThis can’t be undone and it will be\nremove premanently.</string>
+    <string name="delete_post_title">Delete Post?</string>
+    <string name="delete_comment_description">Are you sure want to delete this comment?\nThis can’t be undone and it will be\nremove premanently.</string>
+    <string name="delete_comment_title">Delete Comment?</string>
+    <string name="delete_diary_description">Are you sure want to delete this diary?\nThis can’t be undone and it will be\nremove premanently.</string>
+    <string name="delete_diary_title">Delete Diary?</string>
+    <string name="title_create_post_public">Write a Post</string>
+    <string name="title_create_post_anonymous">Speak Up!</string>
+    <string name="title_create_post_diary">Write a Diary</string>
+    <string name="login_success_title">Log in success!</string>
+    <string name="login_success_description">Hi, welcome back</string>
+    <string name="forgotpass_success_title">Check your email!</string>
+    <string name="forgotpass_success_description">We’ve sent you a link to your email</string>
+    <string name="signup_success_title">Sign up success!</string>
+    <string name="signup_success_description">Your account has been created</string>
+    <string name="update_profile_success_title">Profile updated!</string>
+    <string name="update_profile_success_description">Your profile data has been\nsuccessfully updated</string>
+    <string name="description_empty_notification">All notifications about you will appear here</string>
+    <string name="title_empty_notification">No Notifications Yet!</string>
+    <string name="title_no_post_message">No Post Yet!</string>
+    <string name="title_no_diary_message">No Diary Yet!</string>
+    <string name="description_no_anonymous_post_message">You haven\'t published anonymous post yet</string>
+    <string name="description_no_post_message">You haven\'t published any post yet</string>
+    <string name="description_no_diary_message">You haven\'t published any diary yet</string>
+    <string name="title_profanity_detected">Profanity detected!</string>
+    <string name="description_profanity_detected">We found inappropriate words in your post,\n please check it again.</string>
+    <string name="title_no_followers">No Followers!</string>
+    <string name="title_no_following">No Following!</string>
+    <string name="title_no_following_posts">No Following Posts!</string>
+    <string name="description_no_following_posts">Posts from people you follow will\n appear here, try to follow more people.</string>
+    <string name="title_no_liked_post">You Haven’t liked any post yet!</string>
+    <string name="description_no_liked_post">Your liked post will be display here</string>
+    <string name="title_report_successful">Thanks for reporting</string>
+    <string name="description_report_successful">We will first review your report, to investigate whether\nit violates our rules. Thank you for helping us\nimprove the app.</string>
+
+    <!-- Report options array-->
+    <string-array name="title_report_options">
+        <item>Spam</item>
+        <item>Hate Speech</item>
+        <item>Scam or Fraud</item>
+        <item>Fake Account</item>
+        <item>Inappropriate Content</item>
+    </string-array>
+
+    <string-array name="desc_report_options">
+        <item>Repetitive , irrelevant , or malicious post/comment</item>
+        <item>Contains hateful/abuse speech, bullying, harassment, etc</item>
+        <item>Contains content that has deceptive tendencies</item>
+        <item>User is indicated as not using a real identity</item>
+        <item>Nudity or pornography, violence, dangerous activity, etc</item>
+    </string-array>
+</resources>
