@@ -6,11 +6,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.Window
 import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.rangkul.R
@@ -83,6 +85,33 @@ class CommentActivity : AppCompatActivity(), CommentOptionsBottomSheetFragment.C
             viewModel.getComments(objectPost!!.postId)
         }
 
+        binding.etComment.doOnLayout {
+            var prevY = 0f
+            binding.etComment.setOnTouchListener { v, event ->
+                if (v.id == R.id.etComment) {
+                    when (event.action) {
+                        MotionEvent.ACTION_DOWN -> {
+                            prevY = event.y
+                            v.parent.requestDisallowInterceptTouchEvent(true)
+                        }
+                        MotionEvent.ACTION_MOVE -> {
+                            if (event.y > prevY) {
+                                // Jika gerakan ke atas, gulirkan ke atas
+                                binding.etComment.scrollBy(0, (prevY - event.y).toInt())
+                            } else {
+                                // Jika gerakan ke bawah, gulirkan ke bawah
+                                binding.etComment.scrollBy(0, (prevY - event.y).toInt())
+                            }
+                            prevY = event.y
+                        }
+                        MotionEvent.ACTION_UP -> v.parent.requestDisallowInterceptTouchEvent(false)
+                    }
+                }
+                false
+            }
+        }
+
+
         // Configure Comment RecyclerView
         binding.rvComment.adapter = adapter
         binding.rvComment.layoutManager = LinearLayoutManager(this)
@@ -136,7 +165,7 @@ class CommentActivity : AppCompatActivity(), CommentOptionsBottomSheetFragment.C
         viewModel.addComment(
             CommentData(
                 commentId = "",
-                commentedBy = currentUserData().userId,
+                commentedBy  = currentUserData().userId,
                 commentedAt = Date(),
                 comment = binding.etComment.text.toString(),
                 userName = currentUserData().userName,

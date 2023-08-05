@@ -27,7 +27,6 @@ class SearchAccountActivity : AppCompatActivity(), SearchAccountAdapter.FollowLi
     private val profileViewModel: ProfileViewModel by viewModels()
     private var userDataList: MutableList<UserData> = arrayListOf()
     private lateinit var targetUserId: String
-//    private lateinit var currrentUserId: String
     private lateinit var targetUserName: String
     private lateinit var followType: String // Following or Followers
     private var currentItemPos = -1
@@ -42,6 +41,12 @@ class SearchAccountActivity : AppCompatActivity(), SearchAccountAdapter.FollowLi
                     currentItemPos = pos
                     resultLauncher.launch(intent)
                 }
+            },
+            onFollowClicked = { pos, uid ->
+                addFollowData(pos, uid)
+            },
+            onUnfollowClicked = { pos, uid ->
+                removeFollowData(pos, uid)
             },
             followListStatusListener = this
         )
@@ -59,17 +64,17 @@ class SearchAccountActivity : AppCompatActivity(), SearchAccountAdapter.FollowLi
         binding = ActivitySearchAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tampilkan keyboard secara otomatis
-        binding.etSearchAccount.requestFocus()
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-
-//        currrentUserId = intent.getStringExtra("CURRENT_USER_ID").toString()
         targetUserId = intent.getStringExtra("USER_ID").toString()
         followType = intent.getStringExtra("FOLLOW_TYPE").toString()
         targetUserName = intent.getStringExtra("USER_NAME").toString()
 
         setToolbar()
+
+        // Tampilkan keyboard secara otomatis
+        binding.etSearchAccount.requestFocus()
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+
         // Configure Post RecyclerView
         binding.rvFollowList.adapter = adapter
         binding.rvFollowList.layoutManager = LinearLayoutManager(this)
@@ -90,7 +95,7 @@ class SearchAccountActivity : AppCompatActivity(), SearchAccountAdapter.FollowLi
                 return true
             }
         })
-        binding.rvFollowList.visibility = View.GONE
+//        binding.rvFollowList.visibility = View.GONE
     }
 
     private fun filterList(query: String?) {
@@ -99,15 +104,55 @@ class SearchAccountActivity : AppCompatActivity(), SearchAccountAdapter.FollowLi
                 userData.userName.contains(query, ignoreCase = true)
             }
             adapter.updateList(filteredList.toMutableList())
-            binding.rvFollowList.visibility = View.VISIBLE
+//            binding.rvFollowList.visibility = View.VISIBLE
         } else {
             adapter.updateList(userDataList)
-            binding.rvFollowList.visibility = View.GONE
+//            binding.rvFollowList.visibility = View.GONE
         }
     }
 
     private fun updateDataAtPosition(pos: Int) {
         adapter.dataUpdated(pos)
+    }
+
+    private fun removeFollowData(position: Int, uid: String) {
+        binding.progressBar.show()
+        // Avoid using observable, to prevent adapter.dataUpdated being performed multiple times
+        profileViewModel.removeFollowData(currentUserData().userId, uid) { state ->
+            when(state) {
+                is UiState.Loading -> {}
+
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(state.error)
+                }
+
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    updateDataAtPosition(position)
+                }
+            }
+        }
+    }
+
+    private fun addFollowData(position: Int, uid: String) {
+        binding.progressBar.show()
+        // Avoid using observable, to prevent adapter.dataUpdated being performed multiple times
+        profileViewModel.addFollowData(currentUserData().userId, uid) { state ->
+            when(state) {
+                is UiState.Loading -> {}
+
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(state.error)
+                }
+
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    updateDataAtPosition(position)
+                }
+            }
+        }
     }
 
     private fun observeGetAccountDataList() {
@@ -123,6 +168,7 @@ class SearchAccountActivity : AppCompatActivity(), SearchAccountAdapter.FollowLi
                 is UiState.Success -> {
                     binding.progressBar.hide()
                     userDataList = state.data.toMutableList()
+//                    adapter.updateCurrentUser(currentUserData().userId)
                     adapter.updateList(userDataList)
                 }
             }

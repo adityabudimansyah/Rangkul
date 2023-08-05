@@ -41,7 +41,6 @@ class ProfileRepositoryImp(
     }
 
 
-
     override fun getSessionData(result: (UserData?) -> Unit) {
         val userStr = appPreferences.getString(SharedPrefConstants.USER_SESSION, null)
         if (userStr == null) {

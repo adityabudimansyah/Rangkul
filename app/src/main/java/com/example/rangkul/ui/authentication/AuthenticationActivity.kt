@@ -25,12 +25,12 @@ class AuthenticationActivity : AppCompatActivity() {
         setStatusBarColor()
 
         binding.tvLoginButton.setOnClickListener {
-            val intent = Intent(this, LoginOptionsActivity::class.java)
+            val intent = Intent(this, LoginWithEmailActivity::class.java)
             startActivity(intent)
         }
 
         binding.btSignup.setOnClickListener {
-            val intent = Intent(this, SignupOptionsActivity::class.java)
+            val intent = Intent(this, SignupWithEmailActivity::class.java)
             startActivity(intent)
         }
     }

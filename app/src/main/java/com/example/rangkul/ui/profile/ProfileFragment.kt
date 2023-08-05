@@ -1,12 +1,18 @@
 package com.example.rangkul.ui.profile
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -345,6 +351,9 @@ class ProfileFragment : Fragment(),
                 }
             }
         }
+        binding.civProfilePicture.setOnClickListener {
+           showDialogProfilePicture()
+        }
         binding.civProfilePicture.apply {
             if (currentUserData().profilePicture.isNullOrEmpty()) setImageResource(R.drawable.ic_profile_picture_default)
             else {
@@ -365,6 +374,27 @@ class ProfileFragment : Fragment(),
                 text = currentUserData().bio
             }
         }
+    }
+
+    private fun showDialogProfilePicture(){
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.dialog_bottom_show_profile_picture)
+
+        val civProfilePictureDialog: ImageView = dialog.findViewById(R.id.civProfilePicture)
+
+        if (currentUserData().profilePicture.isNullOrEmpty()) civProfilePictureDialog.setImageResource(R.drawable.ic_profile_picture_default)
+        else {
+            // Load user's profile picture using Glide
+            Glide
+                .with(requireContext())
+                .load(currentUserData().profilePicture)
+                .placeholder(R.drawable.ic_profile_picture_default)
+                .error(R.drawable.ic_baseline_error_24)
+                .into(civProfilePictureDialog)
+        }
+        dialog.show()
     }
 
     private fun currentUserData(): UserData {

@@ -13,13 +13,14 @@ import com.example.rangkul.utils.show
 
 class SearchAccountAdapter(
     val onItemClicked: (Int, String) -> Unit,
+    val onFollowClicked: (Int, String) -> Unit,
+    val onUnfollowClicked: (Int, String) -> Unit,
     private val followListStatusListener: SearchAccountActivity
 ): RecyclerView.Adapter<SearchAccountAdapter.FollowListViewHolder>(){
 
     private var list: MutableList<UserData> = arrayListOf()
     private lateinit var currentUserId: String
     private val taskPerformedSet = mutableSetOf<Int>() // To make sure the task is only performed once for each item
-
 
     inner class FollowListViewHolder (val binding: ItemFollowListBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: UserData) {
@@ -75,6 +76,13 @@ class SearchAccountAdapter(
                 onItemClicked.invoke(adapterPosition, item.userId)
             }
 
+            binding.btFollow.setOnClickListener {
+                onFollowClicked.invoke(adapterPosition, item.userId)
+            }
+
+            binding.btUnfollow.setOnClickListener {
+                onUnfollowClicked.invoke(adapterPosition, item.userId)
+            }
         }
     }
 

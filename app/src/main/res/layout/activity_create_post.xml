@@ -194,6 +194,34 @@
                     app:iconStartPadding="4dp" />
             </com.google.android.material.chip.ChipGroup>
 
+<!--            <androidx.core.widget.NestedScrollView-->
+<!--                android:id="@+id/nestedScrollViewPost"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/chipGroupPostType">-->
+<!--                -->
+<!--                <androidx.appcompat.widget.AppCompatEditText-->
+<!--                    android:id="@+id/etCaption"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/shape_text_input"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:gravity="top|start"-->
+<!--                    android:hint="What’s on your Mind?"-->
+<!--                    android:inputType="textMultiLine"-->
+<!--                    android:padding="@dimen/space_between"-->
+<!--                    android:maxLines="5"-->
+<!--                    android:minLines="5"-->
+<!--                    android:scrollbars="vertical"-->
+<!--                    android:scrollHorizontally="false"-->
+<!--                    android:textColor="@color/textBlack"-->
+<!--                    android:textColorHint="@color/textGrey"-->
+<!--                    android:textSize="16sp"/>-->
+<!--            </androidx.core.widget.NestedScrollView>-->
+
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etCaption"
                 android:layout_width="match_parent"

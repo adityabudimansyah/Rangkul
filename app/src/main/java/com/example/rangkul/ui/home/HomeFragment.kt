@@ -184,6 +184,7 @@ class HomeFragment :
         viewModel.addLike(
             LikeData(
                 likeId = "",
+
                 likedAt = Date(),
             ), item, currentUserData().userId
         ) { state ->

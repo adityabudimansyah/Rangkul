@@ -9,7 +9,7 @@ import java.util.Date
 data class PostData (
     @DocumentId
         var postId: String = "",
-    val createdBy: String = "",
+    val createdBy: String = "", //diubah dari createdBy menjadi userId untuk skripsi
     @ServerTimestamp
         val createdAt: Date = Date(),
     val caption: String = "",

@@ -33,7 +33,7 @@ class CommentAdapter (
                     if(objectPost.type == "Anonymous" && objectPost.createdBy == item.commentedBy && item.commentedBy == currentUserId) {
                         "Anonymous (You)"
                     } else if (objectPost.type == "Anonymous" && objectPost.createdBy == item.commentedBy) {
-                    // Set name to anonymous when the anonymous post owner is commenting
+                        // Set name to anonymous when the anonymous post owner is commenting
                         "Anonymous (Post Owner)"
                     } else {
                         item.userName.limitTextLength()

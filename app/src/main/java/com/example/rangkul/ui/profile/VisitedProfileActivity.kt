@@ -1,9 +1,14 @@
 package com.example.rangkul.ui.profile
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -332,9 +337,12 @@ class VisitedProfileActivity : AppCompatActivity(),
                     setImageResource(R.drawable.ic_badge_psychologist)
                 }
                 else -> {
-                    setImageResource(R.drawable.ic_badge_basic)
+                    setImageDrawable(null)
                 }
             }
+        }
+        binding.civProfilePicture.setOnClickListener {
+            showDialogProfilePicture()
         }
         binding.civProfilePicture.apply {
             if (visitedUserData.profilePicture.isNullOrEmpty()) setImageResource(R.drawable.ic_profile_picture_default)
@@ -356,6 +364,27 @@ class VisitedProfileActivity : AppCompatActivity(),
                 text = visitedUserData.bio
             }
         }
+    }
+
+    private fun showDialogProfilePicture() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.dialog_bottom_show_profile_picture)
+
+        val civProfilePictureDialog: ImageView = dialog.findViewById(R.id.civProfilePicture)
+
+        if (currentUserData().profilePicture.isNullOrEmpty()) civProfilePictureDialog.setImageResource(R.drawable.ic_profile_picture_default)
+        else {
+            // Load user's profile picture using Glide
+            Glide
+                .with(this)
+                .load(currentUserData().profilePicture)
+                .placeholder(R.drawable.ic_profile_picture_default)
+                .error(R.drawable.ic_baseline_error_24)
+                .into(civProfilePictureDialog)
+        }
+        dialog.show()
     }
 
     private fun isUserBeingFollowed() {

@@ -1,7 +1,10 @@
 package com.example.rangkul.ui.post
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,6 +16,7 @@ import com.example.rangkul.utils.limitTextLength
 import com.example.rangkul.utils.show
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.logging.Handler
 
 class PostAdapter (
     val onOptionClicked: (Int, PostData) -> Unit,
@@ -122,6 +126,9 @@ class PostAdapter (
             /*
                 ** Handle onClick **
              */
+            binding.clItemPost.setOnClickListener {
+                onCommentClicked.invoke(adapterPosition, item)
+            }
             binding.ivLikeButtonPost.setOnClickListener {
                 onLikeClicked.invoke(adapterPosition, item.postId)
             }

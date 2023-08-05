@@ -37,9 +37,9 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btSearch.setOnClickListener {
             val intent = Intent(requireContext(), SearchAccountActivity::class.java)
-            intent.putExtra("USER_ID", currentUserData().userId)
-            intent.putExtra("FOLLOW_TYPE", "Following")
-            intent.putExtra("USER_NAME", currentUserData().userName)
+//            intent.putExtra("USER_ID", currentUserData().userId)
+//            intent.putExtra("FOLLOW_TYPE", "Following")
+//            intent.putExtra("USER_NAME", currentUserData().userName)
             startActivity(intent)
         }
 

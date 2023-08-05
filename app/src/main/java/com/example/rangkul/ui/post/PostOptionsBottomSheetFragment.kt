@@ -303,13 +303,15 @@ class PostOptionsBottomSheetFragment(private val deletePostStatusListener: PostO
     private fun setOptionsVisibility() {
         if (objectPost.createdBy == currentUserData().userId) {
             binding.tvDelete.show()
-            binding.tvLikeCountVisibility.show()
-            binding.tvCommentVisibility.show()
+            binding.tvEditPost.hide()
+            binding.tvLikeCountVisibility.hide() //ubah dari show ke hide untuk skripsi
+            binding.tvCommentVisibility.hide() //ubah dari show ke hide untuk skripsi
             binding.tvReport.hide()
             binding.tvFollow.hide()
             binding.tvSeeAccount.hide()
         } else if (objectPost.type == "Anonymous") {
             binding.tvDelete.hide()
+            binding.tvEditPost.hide()
             binding.tvLikeCountVisibility.hide()
             binding.tvCommentVisibility.hide()
             binding.tvReport.show()
@@ -318,6 +320,7 @@ class PostOptionsBottomSheetFragment(private val deletePostStatusListener: PostO
         }
         else {
             binding.tvDelete.hide()
+            binding.tvEditPost.hide()
             binding.tvLikeCountVisibility.hide()
             binding.tvCommentVisibility.hide()
             binding.tvReport.show()

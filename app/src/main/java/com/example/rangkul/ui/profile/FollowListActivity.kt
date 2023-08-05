@@ -72,7 +72,6 @@ class FollowListActivity : AppCompatActivity(), FollowListAdapter.FollowListStat
         profileViewModel.getUserDataList(targetUserId, followType)
         observeGetUserDataList()
 
-
         binding.etSearch.setOnQueryTextListener(object : OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -90,6 +89,7 @@ class FollowListActivity : AppCompatActivity(), FollowListAdapter.FollowListStat
                 userData.userName.contains(query, ignoreCase = true)
             }
             adapter.updateList(filteredList.toMutableList())
+
         } else {
             adapter.updateList(userDataList)
         }

@@ -10,10 +10,10 @@
         android:id="@+id/searchFragment"
         android:title="Search"
         android:icon="@drawable/selector_ic_search"/>
-    <item
-        android:id="@+id/notificationFragment"
-        android:title="Notification"
-        android:icon="@drawable/selector_ic_notification"/>
+<!--    <item-->
+<!--        android:id="@+id/notificationFragment"-->
+<!--        android:title="Notification"-->
+<!--        android:icon="@drawable/selector_ic_notification"/>-->
     <item
         android:id="@+id/profileFragment"
         android:title="Profile"

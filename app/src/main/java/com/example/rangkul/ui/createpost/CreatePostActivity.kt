@@ -9,12 +9,14 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.view.Window
 import android.widget.ImageView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.view.doOnLayout
 import com.bumptech.glide.Glide
 import com.example.rangkul.R
 import com.example.rangkul.data.model.DiaryData
@@ -78,7 +80,31 @@ class CreatePostActivity : AppCompatActivity(), SelectMoodBottomSheetFragment.Se
         setContentView(binding.root)
 
         setToolbar()
-
+//        binding.etCaption.doOnLayout {
+//            var prevY = 0f
+//            binding.etCaption.setOnTouchListener { v, event ->
+//                if (v.id == R.id.etComment) {
+//                    when (event.action) {
+//                        MotionEvent.ACTION_DOWN -> {
+//                            prevY = event.y
+//                            v.parent.requestDisallowInterceptTouchEvent(true)
+//                        }
+//                        MotionEvent.ACTION_MOVE -> {
+//                            if (event.y > prevY) {
+//                                // Jika gerakan ke atas, gulirkan ke atas
+//                                binding.etCaption.scrollBy(0, (prevY - event.y).toInt())
+//                            } else {
+//                                // Jika gerakan ke bawah, gulirkan ke bawah
+//                                binding.etCaption.scrollBy(0, (prevY - event.y).toInt())
+//                            }
+//                            prevY = event.y
+//                        }
+//                        MotionEvent.ACTION_UP -> v.parent.requestDisallowInterceptTouchEvent(false)
+//                    }
+//                }
+//                false
+//            }
+//        }
         // Set Category
         selectedCategory = intent.getStringExtra("SELECTED_CATEGORY").toString()
         binding.tvSelectedCategory.text = selectedCategory

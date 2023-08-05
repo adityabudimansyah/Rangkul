@@ -11,6 +11,7 @@ import com.example.rangkul.utils.hide
 import com.example.rangkul.utils.limitTextLength
 import com.example.rangkul.utils.show
 
+
 class FollowListAdapter(
     val onItemClicked: (Int, String) -> Unit,
     val onFollowClicked: (Int, String) -> Unit,

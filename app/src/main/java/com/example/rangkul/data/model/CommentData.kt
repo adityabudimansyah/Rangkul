@@ -9,11 +9,11 @@ import java.util.Date
 data class CommentData (
         @DocumentId
         var commentId: String = "",
-        val commentedBy: String = "",
+        val commentedBy: String = "", //mengubah commentedBy menjadi userId untuk skripsi
         @ServerTimestamp
         val commentedAt: Date = Date(),
         val comment: String = "",
-        val userName: String = "",
+        val userName: String = "", //mengubah userName menjadi commentedBy untuk skripsi
         val profilePicture: String? = null,
         val userBadge: String = "",
         val postId: String = ""
