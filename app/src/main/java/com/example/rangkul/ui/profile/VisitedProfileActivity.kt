@@ -342,7 +342,24 @@ class VisitedProfileActivity : AppCompatActivity(),
             }
         }
         binding.civProfilePicture.setOnClickListener {
-            showDialogProfilePicture()
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.setContentView(R.layout.dialog_bottom_show_profile_picture)
+
+            val civProfilePictureDialog: ImageView = dialog.findViewById(R.id.civProfilePicture)
+
+            if (visitedUserData.profilePicture.isNullOrEmpty()) civProfilePictureDialog.setImageResource(R.drawable.ic_profile_picture_default)
+            else {
+                // Load user's profile picture using Glide
+                Glide
+                    .with(this)
+                    .load(visitedUserData.profilePicture)
+                    .placeholder(R.drawable.ic_profile_picture_default)
+                    .error(R.drawable.ic_baseline_error_24)
+                    .into(civProfilePictureDialog)
+            }
+            dialog.show()
         }
         binding.civProfilePicture.apply {
             if (visitedUserData.profilePicture.isNullOrEmpty()) setImageResource(R.drawable.ic_profile_picture_default)
@@ -366,26 +383,7 @@ class VisitedProfileActivity : AppCompatActivity(),
         }
     }
 
-    private fun showDialogProfilePicture() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.dialog_bottom_show_profile_picture)
 
-        val civProfilePictureDialog: ImageView = dialog.findViewById(R.id.civProfilePicture)
-
-        if (currentUserData().profilePicture.isNullOrEmpty()) civProfilePictureDialog.setImageResource(R.drawable.ic_profile_picture_default)
-        else {
-            // Load user's profile picture using Glide
-            Glide
-                .with(this)
-                .load(currentUserData().profilePicture)
-                .placeholder(R.drawable.ic_profile_picture_default)
-                .error(R.drawable.ic_baseline_error_24)
-                .into(civProfilePictureDialog)
-        }
-        dialog.show()
-    }
 
     private fun isUserBeingFollowed() {
         profileViewModel.isUserBeingFollowed(currentUserData().userId, visitedUserId) {

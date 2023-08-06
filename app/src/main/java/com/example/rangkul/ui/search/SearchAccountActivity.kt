@@ -95,7 +95,7 @@ class SearchAccountActivity : AppCompatActivity(), SearchAccountAdapter.FollowLi
                 return true
             }
         })
-//        binding.rvFollowList.visibility = View.GONE
+        binding.rvFollowList.visibility = View.GONE
     }
 
     private fun filterList(query: String?) {
@@ -104,10 +104,10 @@ class SearchAccountActivity : AppCompatActivity(), SearchAccountAdapter.FollowLi
                 userData.userName.contains(query, ignoreCase = true)
             }
             adapter.updateList(filteredList.toMutableList())
-//            binding.rvFollowList.visibility = View.VISIBLE
+            binding.rvFollowList.visibility = View.VISIBLE
         } else {
             adapter.updateList(userDataList)
-//            binding.rvFollowList.visibility = View.GONE
+            binding.rvFollowList.visibility = View.GONE
         }
     }
 

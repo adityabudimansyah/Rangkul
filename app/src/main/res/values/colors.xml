@@ -9,6 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="greenPrimary">#87B99F</color>
     <color name="yellowSecondary">#F8D962</color>
+    <color name="yellowChipButton">#FFBF80</color>
+    <color name="redChipButton">#FF8095</color>
+    <color name="blueChipButton">#A9B4FF</color>
     <color name="greenBackground">#6BAB8C</color>
     <color name="textBlack">#292B4C</color>
     <color name="textGrey">#8A868D</color>

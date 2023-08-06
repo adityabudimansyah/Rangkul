@@ -134,6 +134,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="Following"
                         android:textSize="14sp"
+                        app:chipBackgroundColor="@color/chip_yellow_color"
                         app:chipCornerRadius="12dp" />
 
                     <com.google.android.material.chip.Chip
@@ -144,7 +145,8 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="Speak Up!"
                         android:textSize="14sp"
-                        app:chipCornerRadius="12dp" />
+                        app:chipCornerRadius="12dp"
+                        app:chipBackgroundColor="@color/chip_purple_color"/>
                 </com.google.android.material.chip.ChipGroup>
 
                 <androidx.recyclerview.widget.RecyclerView
