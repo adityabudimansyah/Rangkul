@@ -136,7 +136,7 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/ivImagePost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

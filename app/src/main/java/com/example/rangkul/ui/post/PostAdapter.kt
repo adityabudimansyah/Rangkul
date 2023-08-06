@@ -1,11 +1,11 @@
 package com.example.rangkul.ui.post
 
+import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
+import android.graphics.drawable.ColorDrawable
+import android.view.*
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rangkul.R
@@ -147,6 +147,24 @@ class PostAdapter (
             binding.tvUserNamePost.setOnClickListener {
                 if (item.type  != "Anonymous") onProfileClicked.invoke(adapterPosition, item.createdBy)
             }
+//            binding.ivImagePost.setOnClickListener {
+//                val dialog = Dialog(context)
+//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//                dialog.setContentView(R.layout.dialog_bottom_show_picture)
+//
+//                val civPictureDialog: ImageView = dialog.findViewById(R.id.ivPicture)
+//
+//                if (item.image != null) {
+//                    Glide
+//                        .with(context)
+//                        .load(item.image)
+//                        .placeholder(R.drawable.shape_image_content)
+//                        .error(R.drawable.ic_baseline_error_24)
+//                        .into(civPictureDialog)
+//                }
+//                dialog.show()
+//            }
         }
     }
 
