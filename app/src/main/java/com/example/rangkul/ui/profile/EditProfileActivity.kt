@@ -93,6 +93,16 @@ class EditProfileActivity : AppCompatActivity() {
             newUserData.userName = binding.etName.text.toString().trim()
             newUserData.bio = binding.etBio.text.toString().ifEmpty { null }
             newUserData.gender = binding.acGender.text.toString().ifEmpty { null }
+            val telephoneInput = binding.etTelp.text.toString()
+            newUserData.telephone = if (telephoneInput.isNotEmpty()) {
+                try {
+                    telephoneInput.toLong()
+                } catch (e: NumberFormatException) {
+                    null // Invalid input, handle as needed
+                }
+            } else {
+                null // Empty input
+            }
             newUserData.birthDate =
                 if (binding.etBirtDate.text.toString().isEmpty()) null
                 else sdf.parse(binding.etBirtDate.text.toString())
@@ -293,11 +303,14 @@ class EditProfileActivity : AppCompatActivity() {
         binding.etName.setText(currentUserData().userName)
         binding.etBio.setText(currentUserData().bio)
         binding.acGender.setText(currentUserData().gender)
+        currentUserData().telephone?.let { telephone ->
+            binding.etTelp.setText(telephone.toString())
+        }
+
 
         if (currentUserData().birthDate != null) {
             binding.etBirtDate.setText(sdf.format(currentUserData().birthDate!!))
         }
-
     }
 
     private fun setBirthDate() {

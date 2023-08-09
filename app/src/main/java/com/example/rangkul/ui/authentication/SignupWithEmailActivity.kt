@@ -86,7 +86,8 @@ class SignupWithEmailActivity : AppCompatActivity() {
             email = binding.etEmail.text.toString().trim(),
             gender = null,
             birthDate = null,
-            badge = "Basic" // Default value for new user
+            badge = "Basic",
+            telephone = null
         )
     }
 
@@ -141,7 +142,6 @@ class SignupWithEmailActivity : AppCompatActivity() {
         if (pass.filter { it.isLetter() }.firstOrNull { it.isUpperCase() } == null) return false
         if (pass.filter { it.isLetter() }.firstOrNull { it.isLowerCase() } == null) return false
         if (pass.firstOrNull { !it.isLetterOrDigit() } == null) return false // Check special character
-
         return true
     }
 
