@@ -122,10 +122,10 @@ class VisitedProfileActivity : AppCompatActivity(),
             binding.btUnfollow.isClickable = false
             removeFollowData()
         }
-
-        binding.btMessage.setOnClickListener {
-            toast("Under development")
-        }
+//
+//        binding.btMessage.setOnClickListener {
+//            toast("Under development")
+//        }
 
         binding.btProfileOptions.setOnClickListener {
             val profileOptionsBottomDialogFragment = VisitedProfileOptionsBottomSheetFragment()

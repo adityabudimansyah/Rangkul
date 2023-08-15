@@ -27,5 +27,10 @@ class SettingsActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        binding.btAbout.setOnClickListener {
+            val intent = Intent(this@SettingsActivity, AboutActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -36,6 +36,10 @@ class SignupWithEmailActivity : AppCompatActivity() {
         setToolbar()
 
         observer()
+        binding.tvLogIn.setOnClickListener {
+            val intent = Intent(this, LoginWithEmailActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btSignUp.setOnClickListener {
             val email: String = binding.etEmail.text.toString().trim()
@@ -49,7 +53,6 @@ class SignupWithEmailActivity : AppCompatActivity() {
                     user = getUserObj()
                 )
             }
-
             hideKeyboard()
         }
     }
@@ -87,7 +90,6 @@ class SignupWithEmailActivity : AppCompatActivity() {
             gender = null,
             birthDate = null,
             badge = "Basic",
-            telephone = null
         )
     }
 
@@ -97,6 +99,9 @@ class SignupWithEmailActivity : AppCompatActivity() {
             false
         } else if (name.isEmpty()) {
             binding.etName.error = "Please enter your name"
+            false
+        } else if (name.length > 19) {
+            binding.etName.error = "Name should not exceed 19 characters"
             false
         } else if (pass.isEmpty()) {
             binding.etPassword.error = "Please enter password"

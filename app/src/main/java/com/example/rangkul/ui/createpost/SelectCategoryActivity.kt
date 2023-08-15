@@ -35,14 +35,13 @@ class SelectCategoryActivity : AppCompatActivity() {
             intent.putExtra("SELECTED_CATEGORY", selectedCategory)
             startActivity(intent)
         }
-
     }
 
     private fun setupChip() {
         val categoryList =
             arrayListOf("Mental Health", "Body Shaming", "Depression", "Bullying", "Harassment", "Abuse",
             "Addiction", "Health", "Work", "Education", "Family", "Anxiety", "Personality", "Discrimination",
-            "Racist", "Friends", "Sara", "Relationships", "Financial", "Traumatic", "Others")
+            "Racist", "Friends", "Sara", "Relationship", "Financial", "Traumatic", "Others")
         for (name in categoryList) {
             val chip = createChip(name)
             binding.chipGroupCategory.addView(chip)

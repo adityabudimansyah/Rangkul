@@ -18,5 +18,4 @@ data class UserData (
     var gender: String? = null,
     var birthDate: Date? = null,
     val badge: String = "",
-    var telephone: Long? = null,
 ): Parcelable

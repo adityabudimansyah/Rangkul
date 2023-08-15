@@ -41,7 +41,10 @@
     <string name="description_no_liked_post">Your liked post will be display here</string>
     <string name="title_report_successful">Thanks for reporting</string>
     <string name="description_report_successful">We will first review your report, to investigate whether\nit violates our rules. Thank you for helping us\nimprove the app.</string>
-
+    <string name="description_about_1">Rangkul is an application inspired by the spirit of service and care for the mental well-being of its users. Rangkul comes with an authentic and professional psychological approach to respond to the complaints that arise on the main page.</string>
+    <string name="description_about_2">We believe that every experience has a story, and every story deserves to be heard. Rangkul aims to create a safe and supportive space for every individual to talk about their feelings and thoughts. We have a team of dedicated psychologists who provide deeper and knowledgeable responses, assisting users in navigating their emotional journey.</string>
+    <string name="description_about_3">With a focus on professionalism and sincere concern, Rangkul connects you with the support that fits your needs. We are here as a friend ready to listen, understand, and help you navigate your life journey better.</string>
+    <string name="description_about_4">Thank you for being a part of the Rangkul community, where every voice is valued and every emotional journey is given the attention it deserves. We are committed to supporting you in overcoming challenges and celebrating happiness in life.</string>
     <!-- Report options array-->
     <string-array name="title_report_options">
         <item>Spam</item>

@@ -37,10 +37,7 @@ class LoginWithEmailActivity : AppCompatActivity() {
         setToolbar()
 
         observer()
-        binding.tvSignUp.setOnClickListener {
-            val intent = Intent(this, SignupWithEmailActivity::class.java)
-            startActivity(intent)
-        }
+
 
         binding.btLogIn.setOnClickListener {
             val email: String = binding.etEmail.text.toString().trim()
@@ -51,6 +48,10 @@ class LoginWithEmailActivity : AppCompatActivity() {
             }
 
             hideKeyboard()
+        }
+        binding.tvSignUp.setOnClickListener {
+            val intent = Intent(this, SignupWithEmailActivity::class.java)
+            startActivity(intent)
         }
 
 //        binding.tvForgotPassword.setOnClickListener {

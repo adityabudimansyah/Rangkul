@@ -107,23 +107,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLikeCountVisibility" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvEditPost"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:paddingHorizontal="16dp"
-        android:drawableStart="@drawable/ic_edit_post"
-        android:drawablePadding="@dimen/space_between"
-        android:background="@color/bottom_sheet_options_bg_color"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center_vertical"
-        android:includeFontPadding="false"
-        android:text="Edit Post"
-        android:textColor="@color/textBlack"
-        android:textSize="16sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCommentVisibility" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/tvEditPost"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:paddingHorizontal="16dp"-->
+<!--        android:drawableStart="@drawable/ic_edit_post"-->
+<!--        android:drawablePadding="@dimen/space_between"-->
+<!--        android:background="@color/bottom_sheet_options_bg_color"-->
+<!--        android:fontFamily="@font/poppins_regular"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:includeFontPadding="false"-->
+<!--        android:text="Edit Post"-->
+<!--        android:textColor="@color/textBlack"-->
+<!--        android:textSize="16sp"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvCommentVisibility" />-->
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDelete"
@@ -141,7 +141,7 @@
         android:textSize="16sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEditPost" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCommentVisibility" />
 
 
     <ProgressBar

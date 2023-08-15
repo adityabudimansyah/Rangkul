@@ -147,7 +147,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -164,7 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="Don’t have an account?"
+            android:text="Don't have an account?"
             android:textColor="@color/greenPrimary"
             android:textSize="16sp"/>
 
@@ -179,5 +178,4 @@
             android:textSize="16sp"/>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

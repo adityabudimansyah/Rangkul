@@ -70,39 +70,27 @@ class EditProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
-
         setToolbar()
-
         initUserData()
-
         setGenderOptions()
 
         binding.civProfilePicture.setOnClickListener {
             showProfilePictureOptions()
         }
-
         binding.etBirtDate.setOnClickListener {
             setBirthDate()
         }
-
         binding.btSave.setOnClickListener {
             hideKeyboard()
             val newUserData: UserData = currentUserData()
             newUserData.userName = binding.etName.text.toString().trim()
+            if (newUserData.userName.length > 19) {
+                binding.etName.error = "Name cannot exceed 19 characters"
+                return@setOnClickListener
+            }
             newUserData.bio = binding.etBio.text.toString().ifEmpty { null }
             newUserData.gender = binding.acGender.text.toString().ifEmpty { null }
-            val telephoneInput = binding.etTelp.text.toString()
-            newUserData.telephone = if (telephoneInput.isNotEmpty()) {
-                try {
-                    telephoneInput.toLong()
-                } catch (e: NumberFormatException) {
-                    null // Invalid input, handle as needed
-                }
-            } else {
-                null // Empty input
-            }
             newUserData.birthDate =
                 if (binding.etBirtDate.text.toString().isEmpty()) null
                 else sdf.parse(binding.etBirtDate.text.toString())
@@ -303,10 +291,6 @@ class EditProfileActivity : AppCompatActivity() {
         binding.etName.setText(currentUserData().userName)
         binding.etBio.setText(currentUserData().bio)
         binding.acGender.setText(currentUserData().gender)
-        currentUserData().telephone?.let { telephone ->
-            binding.etTelp.setText(telephone.toString())
-        }
-
 
         if (currentUserData().birthDate != null) {
             binding.etBirtDate.setText(sdf.format(currentUserData().birthDate!!))
